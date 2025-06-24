@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguros de Hogar - Protege tu Casa y tu Familia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Reset Básico --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* --- Variables de Estilo --- */
+        :root {
+            --iberdrola-green-dark: #004A43;
+            --iberdrola-green-light: #008477;
+            --iberdrola-green-outline: #009B7D;
+            --iberdrola-green-segment-light: #E0F2F1;
+            --iberdrola-yellow-solar: #FFDA00;
+            --iberdrola-blue-light: #E1F5FE;
+            --iberdrola-text-main: #333;
+            --iberdrola-text-light: #555;
+            --iberdrola-background-light: #FFFFFF;
+            --iberdrola-background-grey: #f4f6f8;
+            --plan-banner-blue: #0077C8; /* Azul original para primer banner */
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Open Sans', sans-serif;
+        }
+
+        /* --- Estilos Generales --- */
+        body { font-family: var(--font-secondary); color: var(--iberdrola-text-main); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        h1, h2, h3 { font-family: var(--font-primary); color: var(--iberdrola-green-dark); margin-bottom: 20px; }
+        p { margin-bottom: 15px; }
+        a { color: var(--iberdrola-green-light); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* --- Header --- */
+        header { background-color: var(--iberdrola-background-light); padding: 15px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-primary); font-size: 28px; font-weight: 700; color: var(--iberdrola-green-dark); }
+        .logo img { height: 40px; /* Ajusta el tamaño del logo */ vertical-align: middle; }
+        .main-nav ul { list-style: none; display: flex; }
+        .main-nav li { margin-left: 30px; }
+        .main-nav a { font-family: var(--font-primary); font-weight: 500; color: var(--iberdrola-text-main); font-size: 17px; transition: color 0.3s ease; }
+        .main-nav a:hover, .main-nav a.active { color: var(--iberdrola-green-light); text-decoration: none; }
+        .btn { display: inline-block; background-color: var(--iberdrola-green-light); color: white; padding: 12px 25px; border-radius: 5px; transition: background-color 0.3s ease; font-weight: 500; }
+        .btn:hover { background-color: var(--iberdrola-green-dark); text-decoration: none; }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://image.s4.sfmc-content.com/lib/fe9215747d62017875/m/1/planluz2.jpg') no-repeat center center/cover; /* IMAGEN AÑADIDA */
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero h1 { font-size: 48px; margin-bottom: 20px; color: white; }
+        .hero p { font-size: 20px; margin-bottom: 30px; }
+
+        /* --- Plan Section --- */
+        .plan-section { padding: 60px 0; background-color: var(--iberdrola-background-grey); }
+        .plan-section h2 { text-align: center; font-size: 36px; margin-bottom: 40px; }
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .plan-card {
+            background-color: var(--iberdrola-background-light);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .plan-card.banner-blue .plan-header { background-color: var(--plan-banner-blue); }
+        .plan-card.banner-green .plan-header { background-color: var(--iberdrola-green-light); }
+        .plan-card.banner-yellow .plan-header { background-color: var(--iberdrola-yellow-solar); }
+
+        .plan-header {
+            color: white;
+            padding: 25px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .plan-body {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .plan-body ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        .plan-body li {
+            margin-bottom: 10px;
+            color: var(--iberdrola-text-light);
+        }
+        .plan-body li:last-child { margin-bottom: 0; }
+        .plan-body .price {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--iberdrola-green-dark);
+            margin-bottom: 20px;
+        }
+        .plan-body .price small { font-size: 18px; font-weight: 400; color: var(--iberdrola-text-light); }
+        .plan-body .btn { margin-top: auto; }
+
+        /* --- Bill Upload Section --- */
+        .bill-upload-section {
+            background-color: var(--iberdrola-blue-light);
+            padding: 60px 0;
+            text-align: center;
+        }
+        .bill-upload-section h2 { font-size: 36px; margin-bottom: 30px; color: var(--iberdrola-green-dark); }
+        .bill-upload-section p { font-size: 18px; margin-bottom: 30px; color: var(--iberdrola-text-light); }
+        .upload-area {
+            background-color: var(--iberdrola-background-light);
+            border: 2px dashed var(--iberdrola-green-outline);
+            border-radius: 8px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .upload-area input[type="file"] {
+            display: none; /* Hide the default file input */
+        }
+        .upload-label {
+            background-color: var(--iberdrola-green-light);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .upload-label:hover { background-color: var(--iberdrola-green-dark); }
+        .uploaded-file-display {
+            font-size: 16px;
+            color: var(--iberdrola-text-light);
+            margin-top: 15px;
+            font-style: italic;
+        }
+        .upload-modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1001; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #888;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+        }
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-content h3 { color: var(--iberdrola-green-dark); margin-bottom: 20px; }
+        .modal-content input[type="file"] { margin-bottom: 20px; display: block; width: 100%; }
+        .modal-content .status-message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        .modal-content .status-message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .modal-content .status-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        /* --- Footer --- */
+        footer { background-color: var(--iberdrola-green-dark); color: white; padding: 40px 0; text-align: center; font-size: 14px; }
+        footer .container { display: flex; justify-content: space-around; flex-wrap: wrap; }
+        footer .footer-col { margin-bottom: 20px; }
+        footer .footer-col h3 { color: var(--iberdrola-green-outline); margin-bottom: 15px; font-size: 18px; }
+        footer .footer-col ul { list-style: none; }
+        footer .footer-col a { color: white; margin-bottom: 8px; display: block; }
+        footer .footer-col a:hover { text-decoration: underline; }
+        footer .social-icons a { color: white; font-size: 24px; margin: 0 10px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; }
+
+        /* --- Media Queries --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 18px; }
+            .main-nav ul { flex-direction: column; align-items: center; }
+            .main-nav li { margin: 10px 0; }
+            .plan-grid { grid-template-columns: 1fr; }
+            footer .container { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/1280px-Salesforce.com_logo.svg.png" alt="Salesforce Logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="hogar.html" class="active">Seguros de Hogar</a></li>
+                    <li><a href="#">Seguros de Salud</a></li>
+                    <li><a href="coche.html">Seguros de Coche</a></li>
+                    <li><a href="#">Seguros de Moto</a></li>
+                    <li><a href="#">Otros Seguros</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Encuentra el Seguro de Hogar Ideal para Ti</h1>
+                <p>Protege tu vivienda y tus pertenencias con nuestras coberturas a medida.</p>
+                <a href="#nuestros-planes" class="btn">Ver Planes de Seguro</a>
+            </div>
+        </section>
+
+        <section id="nuestros-planes" class="plan-section">
+            <div class="container">
+                <h2>Nuestros Planes de Seguro de Hogar</h2>
+                <div class="plan-grid">
+                    <div class="plan-card banner-blue">
+                        <div class="plan-header">Seguro de Hogar Básico</div>
+                        <div class="plan-body">
+                            <ul>
+                                <li>Cobertura de Incendio y Explosión</li>
+                                <li>Daños por Agua (fugas, roturas)</li>
+                                <li>Responsabilidad Civil Privada</li>
+                                <li>Asistencia en el Hogar 24h</li>
+                            </ul>
+                            <div class="price">Desde 15€ <small>/mes</small></div>
+                            <a href="#" class="btn">Contratar Ahora</a>
+                        </div>
+                    </div>
+
+                    <div class="plan-card banner-green">
+                        <div class="plan-header">Seguro de Hogar Ampliado</div>
+                        <div class="plan-body">
+                            <ul>
+                                <li>Todas las coberturas del Plan Básico</li>
+                                <li>Robo y Hurto (dentro y fuera del hogar)</li>
+                                <li>Daños Estéticos al Contenido</li>
+                                <li>Asistencia Informática Remota</li>
+                            </ul>
+                            <div class="price">Desde 25€ <small>/mes</small></div>
+                            <a href="#" class="btn">Contratar Ahora</a>
+                        </div>
+                    </div>
+
+                    <div class="plan-card banner-yellow">
+                        <div class="plan-header">Seguro de Hogar Todo Riesgo</div>
+                        <div class="plan-body">
+                            <ul>
+                                <li>Todas las coberturas del Plan Ampliado</li>
+                                <li>Daños por Fenómenos Atmosféricos</li>
+                                <li>Rotura de Cristales y Espejos</li>
+                                <li>Asistencia Legal y Defensa Jurídica</li>
+                                <li>Valores y Joyas (con límites)</li>
+                            </ul>
+                            <div class="price">Desde 40€ <small>/mes</small></div>
+                            <a href="#" class="btn">Contratar Ahora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bill-upload-section">
+            <div class="container">
+                <h2>¿Necesitas un Presupuesto Personalizado?</h2>
+                <p>Sube tu documentación y te contactaremos para ofrecerte la mejor oferta.</p>
+                <div class="upload-area">
+                    <label for="billFileInput" class="upload-label">Seleccionar Documento</label>
+                    <input type="file" id="billFileInput" accept=".pdf,.doc,.docx,.jpg,.png">
+                    <span id="uploadedFileNameDisplay" class="uploaded-file-display">Último documento subido: Ninguno</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="uploadModal" class="upload-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Subir Documento</h3>
+            <p>Por favor, selecciona el archivo a subir (ej. una tasación, informe, etc.).</p>
+            <input type="file" id="modalBillFileInput" accept=".pdf,.doc,.docx,.jpg,.png">
+            <button id="submitBillFileBtn" class="btn">Subir Archivo</button>
+            <div id="uploadModalStatus" class="status-message"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-col">
+                <h3>Nuestros Seguros</h3>
+                <ul>
+                    <li><a href="hogar.html">Seguros de Hogar</a></li>
+                    <li><a href="#">Seguros de Salud</a></li>
+                    <li><a href="coche.html">Seguros de Coche</a></li>
+                    <li><a href="#">Seguros de Moto</a></li>
+                    <li><a href="#">Otros Seguros</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Atención al Cliente</h3>
+                <ul>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Área de Clientes</a></li>
+                    <li><a href="#">Declarar un Siniestro</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Sobre Nosotros</h3>
+                <ul>
+                    <li><a href="#">Nuestra Empresa</a></li>
+                    <li><a href="#">Trabaja con Nosotros</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#">f</a>
+                    <a href="#">t</a>
+                    <a href="#">in</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Seguros Protege Más. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Elements for the bill upload modal
+        const billFileInput = document.getElementById('billFileInput');
+        const uploadedFileNameDisplay = document.getElementById('uploadedFileNameDisplay');
+        const uploadModal = document.getElementById('uploadModal');
+        const closeButton = document.querySelector('.close-button');
+        const modalBillFileInput = document.getElementById('modalBillFileInput');
+        const submitBillFileBtn = document.getElementById('submitBillFileBtn');
+        const uploadModalStatus = document.getElementById('uploadModalStatus');
+
+        if (billFileInput && uploadedFileNameDisplay && uploadModal && closeButton && modalBillFileInput && submitBillFileBtn && uploadModalStatus) {
+            billFileInput.onchange = function() {
+                if (billFileInput.files.length > 0) {
+                    modalBillFileInput.files = billFileInput.files; // Sync files to modal input
+                    uploadedFileNameDisplay.textContent = 'Documento seleccionado: ' + billFileInput.files[0].name;
+                    uploadModal.style.display = 'flex'; // Show modal
+                    uploadModalStatus.textContent = ''; // Clear previous status
+                    uploadModalStatus.className = '';
+                } else {
+                    uploadedFileNameDisplay.textContent = 'Último documento subido: Ninguno';
+                }
+            };
+
+            closeButton.onclick = function() {
+                uploadModal.style.display = 'none';
+            };
+
+            window.onclick = function(event) {
+                if (event.target == uploadModal) {
+                    uploadModal.style.display = 'none';
+                }
+            };
+
+            submitBillFileBtn.onclick = function() {
+                if (modalBillFileInput.files.length > 0) {
+                    const fileName = modalBillFileInput.files[0].name;
+                    uploadModalStatus.textContent = 'Subiendo "' + fileName + '"...';
+                    uploadModalStatus.className = '';
+
+                    setTimeout(function() {
+                        uploadModalStatus.textContent = 'Documento subido correctamente, en breve nos pondremos en contacto contigo para darte los resultados del análisis o el presupuesto.';
+                        uploadModalStatus.className = 'success';
+                        uploadedFileNameDisplay.textContent = 'Último documento subido: ' + fileName;
+
+                        setTimeout(function() {
+                            uploadModal.style.display = 'none';
+                        }, 2500); // Increased time slightly for the longer message
+                    }, 1500);
+                } else {
+                    uploadModalStatus.textContent = 'Por favor, selecciona un archivo primero.';
+                    uploadModalStatus.className = 'error';
+                }
+            };
+        } else {
+             // console.error("One or more elements for the bill upload modal were not found. Feature will not work.");
+        }
+    });
+    </script>
+</body>
+</html>

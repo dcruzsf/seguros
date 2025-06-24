@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguros Protege Más - Tu Compañía de Seguros</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Reset Básico --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* --- Variables de Estilo --- */
+        :root {
+            --iberdrola-green-dark: #004A43;
+            --iberdrola-green-light: #008477;
+            --iberdrola-green-outline: #009B7D;
+            --iberdrola-green-segment-light: #E0F2F1;
+            --iberdrola-text-main: #333;
+            --iberdrola-text-light: #555;
+            --iberdrola-background-light: #FFFFFF;
+            --iberdrola-background-grey: #f4f6f8;
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Open Sans', sans-serif;
+        }
+
+        /* --- Estilos Generales --- */
+        body { font-family: var(--font-secondary); color: var(--iberdrola-text-main); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        h1, h2, h3 { font-family: var(--font-primary); color: var(--iberdrola-green-dark); margin-bottom: 20px; }
+        p { margin-bottom: 15px; }
+        a { color: var(--iberdrola-green-light); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* --- Header --- */
+        header { background-color: var(--iberdrola-background-light); padding: 15px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-primary); font-size: 28px; font-weight: 700; color: var(--iberdrola-green-dark); }
+        .logo img { height: 40px; /* Ajusta el tamaño del logo */ vertical-align: middle; }
+        .main-nav ul { list-style: none; display: flex; }
+        .main-nav li { margin-left: 30px; }
+        .main-nav a { font-family: var(--font-primary); font-weight: 500; color: var(--iberdrola-text-main); font-size: 17px; transition: color 0.3s ease; }
+        .main-nav a:hover, .main-nav a.active { color: var(--iberdrola-green-light); text-decoration: none; }
+        .btn { display: inline-block; background-color: var(--iberdrola-green-light); color: white; padding: 12px 25px; border-radius: 5px; transition: background-color 0.3s ease; font-weight: 500; }
+        .btn:hover { background-color: var(--iberdrola-green-dark); text-decoration: none; }
+
+        /* --- Hero Banner --- */
+        .hero-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://image.s4.sfmc-content.com/lib/fe9215747d62017875/m/1/placassolaresbanner.jpg') no-repeat center center/cover; /* IMAGEN ACTUALIZADA, ÚNICA REFERENCIA */
+            color: white;
+            padding: 100px 0;
+            text-align: right; /* Alineado a la derecha */
+        }
+        .hero-banner .container {
+            max-width: 1200px;
+            margin-left: auto; /* Alinea a la derecha */
+            margin-right: 0;
+            padding-left: 0;
+            padding-right: 5%; /* Ajuste de padding */
+        }
+        .hero-banner h1 { font-size: 48px; margin-bottom: 20px; color: white; }
+        .hero-banner p { font-size: 20px; margin-bottom: 30px; max-width: 600px; margin-left: auto; /* Alinea el párrafo a la derecha */ }
+        .hero-banner .btn-hero { font-size: 20px; padding: 15px 35px; }
+
+        /* --- Secciones de Contenido --- */
+        .section-highlight, .section-features, .section-cta { padding: 60px 0; }
+        .section-highlight { background-color: var(--iberdrola-background-grey); text-align: center; }
+        .section-highlight h2 { font-size: 36px; margin-bottom: 30px; }
+        .section-highlight .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .highlight-item { background-color: var(--iberdrola-background-light); padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: left; }
+        .highlight-item h3 { color: var(--iberdrola-green-light); margin-bottom: 15px; font-size: 24px; }
+        .highlight-item p { font-size: 16px; color: var(--iberdrola-text-light); }
+        .highlight-item .btn { margin-top: 20px; }
+
+        .section-features { text-align: center; }
+        .section-features h2 { font-size: 36px; margin-bottom: 30px; }
+        .section-features .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .feature-item { background-color: var(--iberdrola-blue-light); padding: 25px; border-radius: 8px; text-align: center; }
+        .feature-item .icon { font-size: 50px; color: var(--iberdrola-green-dark); margin-bottom: 15px; } /* Placeholder for icons */
+        .feature-item h3 { font-size: 22px; color: var(--iberdrola-green-dark); margin-bottom: 10px; }
+        .feature-item p { font-size: 15px; color: var(--iberdrola-text-light); }
+
+        .section-cta { background-color: var(--iberdrola-green-dark); color: white; text-align: center; padding: 80px 0; }
+        .section-cta h2 { color: white; font-size: 40px; margin-bottom: 25px; }
+        .section-cta p { font-size: 20px; margin-bottom: 40px; }
+        .section-cta .btn-cta { background-color: var(--iberdrola-yellow-solar); color: var(--iberdrola-green-dark); font-size: 22px; padding: 15px 40px; }
+        .section-cta .btn-cta:hover { background-color: #e6c200; }
+
+        /* --- Footer --- */
+        footer { background-color: var(--iberdrola-green-dark); color: white; padding: 40px 0; text-align: center; font-size: 14px; }
+        footer .container { display: flex; justify-content: space-around; flex-wrap: wrap; }
+        footer .footer-col { margin-bottom: 20px; }
+        footer .footer-col h3 { color: var(--iberdrola-green-outline); margin-bottom: 15px; font-size: 18px; }
+        footer .footer-col ul { list-style: none; }
+        footer .footer-col a { color: white; margin-bottom: 8px; display: block; }
+        footer .footer-col a:hover { text-decoration: underline; }
+        footer .social-icons a { color: white; font-size: 24px; margin: 0 10px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; }
+
+        /* --- Media Queries --- */
+        @media (max-width: 768px) {
+            .hero-banner h1 { font-size: 36px; }
+            .hero-banner p { font-size: 18px; }
+            .hero-banner .container { text-align: center; margin-right: auto; padding-right: 20px; }
+            .hero-banner p { margin-left: auto; margin-right: auto; }
+            .main-nav ul { flex-direction: column; align-items: center; }
+            .main-nav li { margin: 10px 0; }
+            .section-highlight .grid, .section-features .feature-grid { grid-template-columns: 1fr; }
+            footer .container { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/1280px-Salesforce.com_logo.svg.png" alt="Salesforce Logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="hogar.html">Seguros de Hogar</a></li>
+                    <li><a href="#">Seguros de Salud</a></li>
+                    <li><a href="coche.html">Seguros de Coche</a></li>
+                    <li><a href="#">Seguros de Moto</a></li>
+                    <li><a href="#">Otros Seguros</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-banner">
+            <div class="container">
+                <h1>Protege lo que Más Quieres</h1>
+                <p>Encuentra el seguro perfecto para tu hogar, coche, salud y más. ¡Tu tranquilidad es nuestra prioridad!</p>
+                <a href="#contacto" class="btn btn-hero">Calcula tu Seguro Ideal</a>
+            </div>
+        </section>
+
+        <section class="section-highlight">
+            <div class="container">
+                <h2>Nuestros Seguros Destacados</h2>
+                <div class="grid">
+                    <div class="highlight-item">
+                        <h3>Seguro de Hogar</h3>
+                        <p>Protege tu vivienda y tus bienes ante cualquier imprevisto. Coberturas flexibles adaptadas a tus necesidades.</p>
+                        <a href="hogar.html" class="btn">Más Información</a>
+                    </div>
+                    <div class="highlight-item">
+                        <h3>Seguro de Coche</h3>
+                        <p>Conduce con total tranquilidad. Amplia gama de coberturas, desde terceros hasta todo riesgo.</p>
+                        <a href="coche.html" class="btn">Más Información</a>
+                    </div>
+                    <div class="highlight-item">
+                        <h3>Seguro de Salud</h3>
+                        <p>Acceso a la mejor asistencia médica y especialistas. Tu bienestar y el de tu familia, siempre protegidos.</p>
+                        <a href="#" class="btn">Más Información</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-features">
+            <div class="container">
+                <h2>¿Por qué Elegirnos?</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="icon">🛡️</div>
+                        <h3>Coberturas Completas</h3>
+                        <p>Amplia variedad de pólizas y coberturas para todas tus necesidades.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon">🤝</div>
+                        <h3>Atención Personalizada</h3>
+                        <p>Asesoramiento experto para encontrar el seguro que mejor se adapta a ti.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon">⏱️</div>
+                        <h3>Gestión Rápida</h3>
+                        <p>Tramitamos tus pólizas y siniestros con la máxima agilidad y eficiencia.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon">💰</div>
+                        <h3>Precios Competitivos</h3>
+                        <p>Ofrecemos las mejores tarifas sin comprometer la calidad de nuestro servicio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-cta">
+            <div class="container">
+                <h2>¿Listo para Protegerte?</h2>
+                <p>Pide tu presupuesto sin compromiso y empieza a disfrutar de la tranquilidad.</p>
+                <a href="#contacto" class="btn btn-cta">Pide tu Presupuesto Ahora</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-col">
+                <h3>Nuestros Seguros</h3>
+                <ul>
+                    <li><a href="hogar.html">Seguros de Hogar</a></li>
+                    <li><a href="#">Seguros de Salud</a></li>
+                    <li><a href="coche.html">Seguros de Coche</a></li>
+                    <li><a href="#">Seguros de Moto</a></li>
+                    <li><a href="#">Otros Seguros</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Atención al Cliente</h3>
+                <ul>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Área de Clientes</a></li>
+                    <li><a href="#">Declarar un Siniestro</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Sobre Nosotros</h3>
+                <ul>
+                    <li><a href="#">Nuestra Empresa</a></li>
+                    <li><a href="#">Trabaja con Nosotros</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#">f</a>
+                    <a href="#">t</a>
+                    <a href="#">in</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Seguros Protege Más. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Obtenemos los elementos del banner principal
+        const heroContainer = document.querySelector('.hero-banner .container');
+        const heroTitle = document.querySelector('.hero-banner h1');
+        const heroParagraph = document.querySelector('.hero-banner p');
+        const heroButton = document.querySelector('.hero-banner .btn-hero');
+
+        // Si todos los elementos existen, actualizamos su contenido y estilo
+        if (heroContainer && heroTitle && heroParagraph && heroButton) {
+            heroTitle.textContent = 'Protege lo que Más Quieres';
+            heroParagraph.textContent = 'Encuentra el seguro perfecto para tu hogar, coche, salud y más. ¡Tu tranquilidad es nuestra prioridad!';
+            heroButton.textContent = 'Calcula tu Seguro Ideal';
+            heroButton.href = 'hogar.html'; // Dirigir a la página de seguros de hogar o a un simulador
+
+            // Cambios de Estilo para Alineación (ya estaban en CSS y no necesitan JS si son estáticos)
+            // heroContainer.style.marginLeft = 'auto';
+            // heroContainer.style.marginRight = '0';
+            // heroContainer.style.textAlign = 'right';
+            // heroContainer.style.paddingLeft = '0';
+            // heroContainer.style.paddingRight = '5%';
+        }
+    });
+    </script>
+</body>
+</html>
