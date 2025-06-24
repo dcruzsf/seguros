@@ -189,6 +189,17 @@
             footer .container { flex-direction: column; }
         }
     </style>
+    <script>
+    (function() { // Script Salesforce c360a.min.js
+        'use strict';
+        var sc = document.createElement("script");
+        sc.setAttribute("src", "https://cdn.c360a.salesforce.com/beacon/c360a/efb53368-4e51-4ce6-aabe-b5be432cca60/scripts/c360a.min.js");
+        sc.setAttribute("type", "text/javascript");
+         if (!document.querySelector('script[src="' + sc.getAttribute('src') + '"]')) { 
+            document.head.appendChild(sc);
+        }
+    })();
+    </script>
 </head>
 <body>
     <header>
