@@ -200,6 +200,59 @@
         }
     })();
     </script>
+        <script type="text/javascript">
+        function waitForBootstrap(callback) {
+            const interval = setInterval(() => {
+                if (typeof embeddedservice_bootstrap !== 'undefined') {
+                    clearInterval(interval);
+                    callback();
+                }
+            }, 100);
+        }
+        function initEmbeddedMessaging() {
+            try {
+                window.embeddedservice_bootstrap.settings.language = 'en_US';
+                window.addEventListener("onEmbeddedMessagingReady", () => {
+                    if (window.embeddedservice_bootstrap.prechatAPI) {
+                        let cookieId = "Unknown";
+                        let userId = "Unknown";
+                        try {
+                            const cookieMatch = document.cookie.split('; ').find(cookie => cookie.startsWith('_sfid_17ed='));
+                            if (cookieMatch) {
+                                const cookieData = JSON.parse(decodeURIComponent(cookieMatch.split('=')[1]));
+                                cookieId = cookieData.anonymousId || "Unknown";
+                            }
+                        } catch (error) {
+                            console.warn("Error al obtener cookieId (método dinámico):", error);
+                        }
+                        try {
+                            const userScript = document.querySelector('script[type="application/json"][data-provider-type="user"]');
+                            if (userScript) {
+                                const userData = JSON.parse(userScript.textContent || '{}');
+                                userId = userData.crmId || "Unknown";
+                            }
+                        } catch (error) {
+                            console.warn("Error al obtener userId (método dinámico):", error);
+                        }
+                        embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({ "cookieId": cookieId, "userId": userId });
+                    }
+                });
+                window.embeddedservice_bootstrap.init( '00DHs00000NDdXz', 'Insurance_Web', 'https://storm-d162486af2c029.my.site.com/ESWInsuranceWeb1750775509670', { scrt2URL: 'https://storm-d162486af2c029.my.salesforce-scrt.com' });
+            } catch (err) {
+                console.error('Error en initEmbeddedMessaging (método dinámico):', err);
+            }
+        }
+        const sfBootstrapScript = document.createElement('script');
+        sfBootstrapScript.type = 'text/javascript';
+        sfBootstrapScript.src = 'https://storm-d162486af2c029.my.site.com/ESWInsuranceWeb1750775509670/assets/js/bootstrap.min.js'; 
+        sfBootstrapScript.onload = function() {
+            waitForBootstrap(initEmbeddedMessaging);
+        };
+        sfBootstrapScript.onerror = function() {
+            console.error('ERROR CRÍTICO: Falló la carga de bootstrap.min.js dinámicamente.');
+        };
+        document.head.appendChild(sfBootstrapScript);
+    </script>
 </head>
 <body>
     <header>
